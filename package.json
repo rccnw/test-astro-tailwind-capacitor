@@ -1,0 +1,35 @@
+{
+  "name": "test-astro-tailwind-capacitor",
+  "version": "1.0.0",
+  "description": "A project combining Astro (static site generator), Tailwind CSS (utility-first CSS framework), and Capacitor (cross-platform native runtime) to create a web application that can be deployed both as a website and as a mobile app.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rccnw/test-astro-tailwind-capacitor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rccnw/test-astro-tailwind-capacitor/issues"
+  },
+  "homepage": "https://github.com/rccnw/test-astro-tailwind-capacitor#readme",
+  "dependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/cli": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "@capacitor/ios": "^7.4.3",
+    "@rollup/rollup-win32-x64-msvc": "^4.52.3",
+    "astro": "^5.14.1",
+    "autoprefixer": "^10.4.21",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.9.2"
+  }
+}
