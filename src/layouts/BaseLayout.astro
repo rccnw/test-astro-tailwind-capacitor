@@ -1,0 +1,46 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'Astro Tailwind Capacitor', description } = Astro.props as Props;
+---
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+  </head>
+  <body class="bg-base-200 text-base-content min-h-screen">
+    <div class="flex min-h-screen flex-col">
+      <header class="navbar bg-base-100 shadow">
+        <div class="flex-1">
+          <a class="btn btn-ghost text-xl" href="/">Astro Capacitor Kit</a>
+        </div>
+        <nav class="flex-none">
+          <ul class="menu menu-horizontal px-1">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#workflow">Workflow</a></li>
+            <li><a href="#cta">Get Started</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="flex-1">
+        <slot />
+      </main>
+
+      <footer class="footer footer-center bg-base-100 p-6 text-base-content">
+        <div>
+          <p>
+            Built with <span class="font-semibold">Astro</span>, <span class="font-semibold">Tailwind CSS</span>,
+            <span class="font-semibold">DaisyUI</span>, and <span class="font-semibold">Capacitor</span>.
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
