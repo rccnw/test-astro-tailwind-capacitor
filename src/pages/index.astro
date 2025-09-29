@@ -1,19 +1,150 @@
 ---
-// Component script (runs on server)
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+
+const features = [
+  {
+    title: 'Astro Islands',
+    description: 'Deliver static HTML by default and hydrate only what you need for lightning-fast pages.',
+    icon: '🌌',
+  },
+  {
+    title: 'Tailwind + DaisyUI',
+    description: 'Compose polished interfaces quickly with utility classes and accessible component primitives.',
+    icon: '🎨',
+  },
+  {
+    title: 'Capacitor Bridge',
+    description: 'Sync your web build into native shells to unlock camera, filesystem, and offline capabilities.',
+    icon: '🔌',
+  },
+  {
+    title: 'Single Source of Truth',
+    description: 'Reuse one codebase across web, Android, and iOS—all managed from this workspace.',
+    icon: '🧭',
+  },
+];
+
+const workflow = [
+  {
+    title: 'Prototype in Astro',
+    details: 'Use fast refresh and content collections to model your features without native build overhead.',
+  },
+  {
+    title: 'Style with Tailwind',
+    details: 'Keep design tokens and responsive tweaks inline, then layer on DaisyUI patterns when you need polish.',
+  },
+  {
+    title: 'Sync to Devices',
+    details: 'Run npm run build and npx cap sync to push the latest web output into Android and iOS containers.',
+  },
+];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro + Tailwind + Capacitor</title>
-  </head>
-  <body class="bg-blue-50 p-8">
-    <main class="max-w-md mx-auto bg-white rounded-xl shadow-lg p-6">
-      <h1 class="text-2xl font-bold text-gray-900 mb-4">Welcome to Astro!</h1>
-      <p class="text-gray-600">This is a test page with Tailwind CSS styling.</p>
-    </main>
-  </body>
-</html>
+<BaseLayout
+  title="Astro + Tailwind + Capacitor"
+  description="A starter experience that ships fast web UI and syncs cleanly into native shells."
+>
+  <section class="hero min-h-[60vh] bg-base-200">
+    <div class="hero-content flex-col gap-10 text-center lg:flex-row lg:text-left">
+      <div class="max-w-xl space-y-6">
+        <div class="badge badge-primary badge-outline">Ships to Web · Android · iOS</div>
+        <h1 class="text-4xl font-bold sm:text-5xl">
+          Build once,
+          <span class="text-primary"> deploy everywhere</span>
+        </h1>
+        <p class="text-lg text-base-content/80">
+          Start with Astro for speedy static output, sprinkle Tailwind and DaisyUI for delightful visuals,
+          then hand it to Capacitor to reach the app stores with native integrations.
+        </p>
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a class="btn btn-primary" href="#features">Explore the stack</a>
+          <a class="btn btn-outline" href="https://github.com/rccnw/test-astro-tailwind-capacitor/blob/main/README.md" target="_blank">
+            Reproduce this setup
+          </a>
+        </div>
+      </div>
+      <div class="mockup-window border bg-base-100 max-w-md">
+        <div class="flex flex-col gap-4 bg-base-200 p-6">
+          <div class="flex items-center gap-3">
+            <span class="badge badge-info badge-outline">npm</span>
+            <span class="font-mono text-sm">npm run dev</span>
+          </div>
+          <div class="stats shadow">
+            <div class="stat">
+              <div class="stat-title">Cold start</div>
+              <div class="stat-value">&lt; 1s</div>
+              <div class="stat-desc">Astro fast refresh</div>
+            </div>
+            <div class="stat">
+              <div class="stat-title">Bundle size</div>
+              <div class="stat-value">0 JS*</div>
+              <div class="stat-desc">Only hydrate what you need</div>
+            </div>
+          </div>
+          <p class="text-sm text-base-content/70">
+            *This page ships zero client-side JavaScript by default. Add islands only when interactivity calls for it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="bg-base-100 py-16">
+    <div class="mx-auto flex max-w-6xl flex-col gap-10 px-6">
+      <header class="text-center">
+        <p class="text-primary font-semibold uppercase tracking-wide">Feature tour</p>
+        <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Why this stack clicks together</h2>
+        <p class="mt-4 text-base-content/70">
+          From speedy builds to native APIs, each tool plays a focused role that helps you ship confidently.
+        </p>
+      </header>
+      <div class="grid gap-6 md:grid-cols-2">
+        {features.map(({ title, description, icon }) => (
+          <FeatureCard title={title} description={description} icon={icon} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="workflow" class="bg-base-200 py-16">
+    <div class="mx-auto flex max-w-6xl flex-col gap-10 px-6">
+      <header class="text-center">
+        <p class="text-secondary font-semibold uppercase tracking-wide">Workflow</p>
+        <h2 class="mt-3 text-3xl font-bold sm:text-4xl">From idea to device builds</h2>
+        <p class="mt-4 text-base-content/70">
+          Follow the loop below whenever you add a feature. You get fast iteration on the web and immediate parity on devices.
+        </p>
+      </header>
+      <div class="grid gap-6 lg:grid-cols-3">
+        {workflow.map(({ title, details }) => (
+          <div class="card bg-base-100 shadow-md" key={title}>
+            <div class="card-body">
+              <h3 class="card-title">{title}</h3>
+              <p class="text-base-content/70">{details}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" class="bg-base-100 py-16">
+    <div class="mx-auto max-w-4xl px-6">
+      <div class="card bg-gradient-to-r from-primary to-secondary text-primary-content shadow-xl">
+        <div class="card-body items-center text-center gap-4">
+          <h2 class="card-title text-3xl font-bold">Ready to wire in native plugins?</h2>
+          <p class="max-w-2xl text-primary-content/90">
+            Run <span class="badge badge-outline badge-lg bg-white/10 text-primary-content">npx cap open android</span>
+            or <span class="badge badge-outline badge-lg bg-white/10 text-primary-content">npx cap open ios</span> after a sync
+            to jump straight into native IDEs. Camera, notifications, and more are a plugin away.
+          </p>
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a class="btn" href="https://capacitorjs.com/docs" target="_blank">Browse Capacitor docs</a>
+            <a class="btn btn-outline" href="https://astro.build/integrations/" target="_blank">Explore Astro integrations</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
